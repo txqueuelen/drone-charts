@@ -1,0 +1,18 @@
+apiVersion: v2
+name: drone-server
+description: A Helm chart for Kubernetes
+
+# Image naming from Drone in Docker repository is inconsistent.
+# The comment below is used by renovate to have the correct
+# repository where to look for updates
+# datasourceTemplate: docker.io/drone/drone
+
+type: application
+appVersion: 2.5.0
+
+version: 1.0.0
+
+maintainers:
+  - name: kang-makes
+    email: sysadmin@kangmak.es
+    url: kangmak.es
