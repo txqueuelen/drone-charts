@@ -1,0 +1,21 @@
+{
+  "extends": [
+    "config:base",
+    ":disableDependencyDashboard"
+  ],
+  // RegexManagers will match patterns from Chart.yaml
+  "regexManagers": [
+    {
+      // Extract drone service/runner and version.
+      "fileMatch": [
+        "^Chart.yaml$"
+      ],
+      // Get the appVersion from the chart metadata file
+      "matchStrings": [
+        "^# datasourceTemplate: (?<depName>.+)\n",
+        "^appVersion: (?<currentValue>.+)\n"
+      ],
+      "datasourceTemplate": "docker"
+    }
+  ]
+}
