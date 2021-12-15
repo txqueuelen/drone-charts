@@ -1,0 +1,18 @@
+apiVersion: v1
+entries:
+  drone-runner-kube:
+  - apiVersion: v2
+    appVersion: 1.0.0-rc.2
+    created: "2021-12-15T19:08:45.257906447Z"
+    description: A Helm chart for Kubernetes
+    digest: 0dea9eca1ef4c000920823ad4fd5b8503670b9e8b3f5b3eecab4009356a69d8f
+    maintainers:
+    - email: sysadmin@kangmak.es
+      name: kang-makes
+      url: kangmak.es
+    name: drone-runner-kube
+    type: application
+    urls:
+    - https://github.com/txqueuelen/drone-charts/releases/download/drone-runner-kube-1.0.0/drone-runner-kube-1.0.0.tgz
+    version: 1.0.0
+generated: "2021-12-15T19:08:45.257912547Z"
