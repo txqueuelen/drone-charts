@@ -1,10 +1,12 @@
+{{- $fullName := include "drone-runner-kube.fullname" . -}}
+{{- $namespace := .Release.Namespace -}}
 {{- with .Values.env.configMap }}
 ---
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: {{ include "drone-runner-kube.fullname" . }}
-  namespace: {{ .Release.Namespace }}
+  name: {{ $fullName }}
+  namespace: {{ $namespace }}
 data:
   {{- toYaml . | nindent 2 }}
 {{- end }}
