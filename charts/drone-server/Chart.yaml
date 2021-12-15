@@ -11,3 +11,8 @@ type: application
 appVersion: 2.5.0
 
 version: 1.0.0
+
+maintainers:
+  - name: kang-makes
+    email: sysadmin@kangmak.es
+    url: kangmak.es
