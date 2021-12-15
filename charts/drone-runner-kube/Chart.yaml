@@ -1,6 +1,6 @@
 apiVersion: v2
 name: drone-runner-kube
-description: A Helm chart for Kubernetes
+description: Helm chart to deply a Kubernetes runner for Drone
 
 # Image naming from Drone in Docker repository is inconsistent.
 # The comment below is used by renovate to have the correct
@@ -10,7 +10,7 @@ description: A Helm chart for Kubernetes
 type: application
 appVersion: 1.0.0-rc.2
 
-version: 1.0.0
+version: 1.0.1
 
 maintainers:
   - name: kang-makes
