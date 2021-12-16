@@ -63,7 +63,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           {{- if .Values.policy.enabled }}
           volumeMounts:
-            - name: {{ include "drone-runner-kube.fullname" . }}-policy
+            - name: policy
               mountPath: /policy.yaml
               subPath: policy.yaml
           {{- end }}
