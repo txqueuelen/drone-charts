@@ -1,11 +1,11 @@
-{{- $fullName := include "drone-server.fullname" . -}}
+{{- $fullName := include "drone.fullname" . -}}
 {{- $namespace := .Release.Namespace -}}
-{{- with .Values.env.secret }}
-kind: Secret
+{{- with .Values.env.configMap }}
+kind: ConfigMap
 apiVersion: v1
 metadata:
   name: {{ $fullName }}
   namespace: {{ $namespace }}
-stringData:
+data:
   {{- toYaml . | nindent 2 }}
 {{- end }}

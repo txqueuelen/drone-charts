@@ -1,15 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "drone-server.fullname" . }}
+  name: {{ include "drone.fullname" . }}
   namespace: {{ .Release.Namespace }}
   labels:
-    {{- include "drone-server.labels" . | nindent 4 }}
+    {{- include "drone.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount | default 1 }}
   selector:
     matchLabels:
-      {{- include "drone-server.selectorLabels" . | nindent 6 }}
+      {{- include "drone.selectorLabels" . | nindent 6 }}
   {{- with .Values.updateStrategy }}
   strategy:
     {{- toYaml . | nindent 4 }}
@@ -21,7 +21,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "drone-server.selectorLabels" . | nindent 8 }}
+        {{- include "drone.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -33,10 +33,10 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
             - configMapRef:
-                name: {{ include "drone-server.fullname" . }}
+                name: {{ include "drone.fullname" . }}
                 optional: true
             - secretRef:
-                name: {{ include "drone-server.fullname" . }}
+                name: {{ include "drone.fullname" . }}
                 optional: true
           {{- range .Values.envFrom.secrets }}
             - secretRef:
@@ -46,6 +46,9 @@ spec:
             - configMapRef:
                 name: {{ . }}
           {{- end }}
+          env:
+            - name:
+              value: 
           ports:
             - name: http
               containerPort: 80
@@ -90,7 +93,7 @@ spec:
             {{- if .Values.persistentVolume.existingClaim }}
             claimName: {{ .Values.persistentVolume.existingClaim }}
             {{- else }}
-            claimName: {{ template "drone-server.fullname" . }}
+            claimName: {{ template "drone.fullname" . }}
             {{- end }}
           {{- else }}
           emptyDir:
