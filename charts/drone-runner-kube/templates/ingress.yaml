@@ -1,6 +1,5 @@
 {{- if .Values.ingress.enabled -}}
 {{- $fullName := include "drone-runer-kube.fullname" . -}}
----
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:

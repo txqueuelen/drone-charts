@@ -1,7 +1,6 @@
 {{- if .Values.policy.enabled -}}
 {{- $fullName := include "drone-runner-kube.fullname" . -}}
 {{- $namespace := .Release.Namespace -}}
----
 kind: ConfigMap
 apiVersion: v1
 metadata:
