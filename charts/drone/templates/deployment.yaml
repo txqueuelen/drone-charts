@@ -46,9 +46,6 @@ spec:
             - configMapRef:
                 name: {{ . }}
           {{- end }}
-          env:
-            - name:
-              value: 
           ports:
             - name: http
               containerPort: 80
