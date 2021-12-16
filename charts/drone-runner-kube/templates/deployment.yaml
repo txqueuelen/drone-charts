@@ -44,6 +44,11 @@ spec:
             - configMapRef:
                 name: {{ . }}
           {{- end }}
+          env:
+          {{- if .Values.policy.enabled }}
+            - name: DRONE_POLICY_FILE
+              value: /policy.yaml
+          {{- end }}
           ports:
             - name: http
               containerPort: 3000
