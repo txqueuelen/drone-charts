@@ -61,7 +61,12 @@ spec:
             runAsUser: 1000
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          volumes:
+          {{- if .Values.policy.enabled -}}
+          volumeMounts:
+            - name: {{ include "drone-runner-kube.fullname" . }}-policy
+              mountPath: /policy.yaml
+              subPath: policy.yaml
+          {{- end }}
       {{- if .Values.policy.enabled -}}
       volumes:
         - name: policy
