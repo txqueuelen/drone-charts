@@ -1,6 +1,7 @@
 {{- if .Values.rbac.enabled -}}
 {{- $root := . -}}
 {{- range $nsName := .Values.rbac.buildNamespaces -}}
+---
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
@@ -15,5 +16,21 @@ rules:
   - apiGroups: [ "" ]
     resources: [ "pods", "pods/log" ]
     verbs: [ "get", "create", "delete", "list", "watch", "update" ]
-{{- end }}
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: {{ include "drone-runner-kube.fullname" $root }}
+  namespace: {{ . | quote }}
+  labels:
+    {{- include "drone-runner-kube.labels" $root | nindent 4 }}
+subjects:
+  - kind: ServiceAccount
+    name: {{ include "drone-runner-kube.fullname" $root }}
+    namespace: {{ $root.Release.Namespace }}
+roleRef:
+  kind: Role
+  name: {{ include "drone-runner-kube.fullname" $root }}
+  apiGroup: rbac.authorization.k8s.io
+{{ end }}
 {{- end }}

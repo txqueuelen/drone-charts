@@ -44,8 +44,8 @@ spec:
             - configMapRef:
                 name: {{ . }}
           {{- end }}
-          env:
           {{- if .Values.policy.enabled }}
+          env:
             - name: DRONE_POLICY_FILE
               value: /policy.yaml
           {{- end }}
