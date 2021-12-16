@@ -1,0 +1,7 @@
+policy:
+  enabled: true
+  policies:
+  - kind: policy
+    name: default
+    metadata:
+      namespace: default

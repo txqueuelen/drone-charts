@@ -49,3 +49,14 @@ Selector labels
 app.kubernetes.io/name: {{ include "drone-runner-kube.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
+
+{{/*
+Create the name of the service account to use
+*/}}
+{{- define "drone-runner-kube.serviceAccountName" -}}
+{{- if .Values.serviceAccount.create }}
+{{- default (include "drone-runner-kube.fullname" .) .Values.serviceAccount.name }}
+{{- else }}
+{{- default "default" .Values.serviceAccount.name }}
+{{- end }}
+{{- end }}

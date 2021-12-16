@@ -23,6 +23,8 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      serviceAccountName: {{ include "drone-runner-kube.serviceAccountName" . }}
+      terminationGracePeriodSeconds: 3600
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
@@ -42,15 +44,14 @@ spec:
             - configMapRef:
                 name: {{ . }}
           {{- end }}
-        # TODO: Is has no HTTP where to catch a HTTP probe (I think).
-        # livenessProbe:
-        #   httpGet:
-        #     path: /
-        #     port: http
-        # readinessProbe:
-        #   httpGet:
-        #     path: /
-        #     port: http
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
           securityContext:
             capabilities:
               drop:
@@ -60,6 +61,13 @@ spec:
             runAsUser: 1000
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          volumes:
+      {{- if .Values.policy.enabled -}}
+      volumes:
+        - name: policy
+          configMap:
+            name: {{ include "drone-runner-kube.fullname" . }}-policy
+      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

@@ -13,6 +13,8 @@ podAnnotations: {}
 podSecurityContext: {}
   # fsGroup: 2000
 
+updateStrategy: {}
+
 env:
   configMap: {}
   secret: {}
@@ -47,6 +49,61 @@ resources: {}
   # requests:
   #   cpu: 100m
   #   memory: 128Mi
+
+persistentVolume:
+  ## If you are using SQLite as your DB for Drone, it is recommended to enable persistence. If
+  ## enabled, the Chart will create a PersistentVolumeClaim to store its state in. If you are
+  ## using a DB other than SQLite, set this to false to avoid allocating unused storage.
+  ## If set to false, Drone will use an emptyDir instead, which is ephemeral.
+  ##
+  enabled: false
+
+  ## Drone server data Persistent Volume access modes
+  ## Must match those of existing PV or dynamic provisioner
+  ## Ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
+  ##
+  accessModes:
+    - ReadWriteOnce
+
+  ## Drone server data Persistent Volume annotations
+  ##
+  annotations: {}
+
+  ## If you'd like to bring your own PVC for persisting Drone state, pass the name of the
+  ## created + ready PVC here. If set, this Chart will not create the default PVC.
+  ## Requires server.persistentVolume.enabled: true
+  ##
+  existingClaim: ""
+
+  ## Drone server data Persistent Volume mount root path
+  ##
+  mountPath: /data
+
+  ## Drone server data Persistent Volume size
+  ##
+  size: 8Gi
+
+  ## Drone server data Persistent Volume Storage Class
+  storageClass: ""
+
+  ## Drone server data Persistent Volume Binding Mode
+  ## If defined, volumeMode: <volumeMode>
+  ## If empty (the default) or set to null, no volumeBindingMode spec is
+  ## set, choosing the default mode.
+  ##
+  volumeMode: ""
+
+  ## Subdirectory of Drone server data Persistent Volume to mount
+  ## Useful if the volume's root directory is not empty
+  ##
+  subPath: ""
+
+## If persistentVolume.enabled is set to false, Drone will mount an emptyDir instead of
+## a PVC for any state that it needs to persist.
+##
+emptyDir:
+  ## Total space to request for the emptyDir. An empty value here means no limit.
+  sizeLimit: ""
 
 nodeSelector: {}
 

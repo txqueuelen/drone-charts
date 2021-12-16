@@ -1,0 +1,16 @@
+{{- if .Values.policy.enabled -}}
+{{- $fullName := include "drone-runner-kube.fullname" . -}}
+{{- $namespace := .Release.Namespace -}}
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: {{ $fullName }}-policy
+  namespace: {{ $namespace }}
+data:
+  policy.yaml: |
+    {{- range $policy := .Values.policy.policies }}
+    ---
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+{{- end }}

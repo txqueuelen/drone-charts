@@ -10,6 +10,10 @@ spec:
   selector:
     matchLabels:
       {{- include "drone-server.selectorLabels" . | nindent 6 }}
+  {{- with .Values.updateStrategy }}
+  strategy:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -63,6 +67,10 @@ spec:
             runAsUser: 1000
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - name: storage-volume
+              mountPath: {{ .Values.persistentVolume.mountPath }}
+              subPath: "{{ .Values.persistentVolume.subPath }}"
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -75,3 +83,20 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      volumes:
+        - name: storage-volume
+          {{- if .Values.persistentVolume.enabled }}
+          persistentVolumeClaim:
+            {{- if .Values.persistentVolume.existingClaim }}
+            claimName: {{ .Values.persistentVolume.existingClaim }}
+            {{- else }}
+            claimName: {{ template "drone-server.fullname" . }}
+            {{- end }}
+          {{- else }}
+          emptyDir:
+          {{- if .Values.emptyDir.sizeLimit }}
+            sizeLimit: {{ .Values.emptyDir.sizeLimit }}
+          {{- else }}
+            {}
+          {{- end -}}
+        {{- end -}}
