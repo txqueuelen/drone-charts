@@ -1,5 +1,6 @@
 image:
-  repository: docker.io/drone/drone-runner-kube
+  registry: docker.io
+  repository: drone/drone-runner-kube
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""

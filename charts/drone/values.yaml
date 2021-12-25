@@ -1,5 +1,6 @@
 image:
-  repository: docker.io/drone/drone
+  registry: docker.io
+  repository: drone/drone
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
