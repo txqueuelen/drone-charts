@@ -144,6 +144,20 @@ entries:
   drone-kubernetes-secrets:
   - apiVersion: v2
     appVersion: latest
+    created: "2021-12-25T18:31:44.527244142Z"
+    description: A Drone component to fetch secrets from a Kubernetes cluster
+    digest: 36db9e3208e9d428bb5b243a415ec10ca9207bad8be70236809810c03c938ac6
+    maintainers:
+    - email: sysadmin@kangmak.es
+      name: kang-makes
+      url: kangmak.es
+    name: drone-kubernetes-secrets
+    type: application
+    urls:
+    - https://github.com/txqueuelen/drone-charts/releases/download/drone-kubernetes-secrets-1.0.4/drone-kubernetes-secrets-1.0.4.tgz
+    version: 1.0.4
+  - apiVersion: v2
+    appVersion: latest
     created: "2021-12-25T18:08:01.88781061Z"
     description: A Drone component to fetch secrets from a Kubernetes cluster
     digest: 6bf71a3207f755f400e433887ad43eb0d58c40aec5067679b24fc7a84604b34c
@@ -466,4 +480,4 @@ entries:
     urls:
     - https://github.com/txqueuelen/drone-charts/releases/download/drone-server-1.0.1/drone-server-1.0.1.tgz
     version: 1.0.1
-generated: "2021-12-25T18:08:02.142956996Z"
+generated: "2021-12-25T18:31:44.527359742Z"
