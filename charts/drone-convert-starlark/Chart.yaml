@@ -1,0 +1,18 @@
+apiVersion: v2
+name: drone-convert-starlark
+description: Allows Drone to convert pipelines in starlark into Json parsable by Drone
+
+# Image naming from Drone in Docker repository is inconsistent.
+# The comment below is used by renovate to have the correct
+# repository where to look for updates
+# datasourceTemplate: docker.io/drone/drone-convert-starlark
+
+type: application
+appVersion: latest
+
+version: 1.0.0
+
+maintainers:
+  - name: kang-makes
+    email: sysadmin@kangmak.es
+    url: kangmak.es
