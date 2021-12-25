@@ -2,12 +2,16 @@ apiVersion: v2
 name: drone-kubernetes-secrets
 description: A Drone component to fetch secrets from a Kubernetes cluster
 
+# Image naming from Drone in Docker repository is inconsistent.
+# The comment below is used by renovate to have the correct
+# repository where to look for updates
+# datasourceTemplate: docker.io/drone/kubernetes-secrets
+
 type: application
-
-version: 1.0.0
-
 # Yeah. Seriously. This component has not versioning in docker hub
 appVersion: latest
+
+version: 1.0.1
 
 maintainers:
   - name: kang-makes
