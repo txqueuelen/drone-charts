@@ -3,6 +3,20 @@ entries:
   drone:
   - apiVersion: v2
     appVersion: 2.5.0
+    created: "2021-12-25T17:37:58.001969699Z"
+    description: Helm chart to deploy Drone CI in Kubernetes
+    digest: ff4c50af88f05efcc6a07f8adbd15ff83f076c9cecee6b1c91fd0a5011f90fbf
+    maintainers:
+    - email: sysadmin@kangmak.es
+      name: kang-makes
+      url: kangmak.es
+    name: drone
+    type: application
+    urls:
+    - https://github.com/txqueuelen/drone-charts/releases/download/drone-1.2.1/drone-1.2.1.tgz
+    version: 1.2.1
+  - apiVersion: v2
+    appVersion: 2.5.0
     created: "2021-12-25T16:59:37.649624253Z"
     description: Helm chart to deploy Drone CI in Kubernetes
     digest: f7b1686c7025699fbaa407679a7b8d839b3c040acefe52fc6c1f18ff66549bec
@@ -102,6 +116,20 @@ entries:
   drone-kubernetes-secrets:
   - apiVersion: v2
     appVersion: latest
+    created: "2021-12-25T17:37:58.176538598Z"
+    description: A Drone component to fetch secrets from a Kubernetes cluster
+    digest: 035f88fb6716daafffcfb26939b008f19cf70e7a4aa8b5372fa49b8eb532414b
+    maintainers:
+    - email: sysadmin@kangmak.es
+      name: kang-makes
+      url: kangmak.es
+    name: drone-kubernetes-secrets
+    type: application
+    urls:
+    - https://github.com/txqueuelen/drone-charts/releases/download/drone-kubernetes-secrets-1.0.1/drone-kubernetes-secrets-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
+    appVersion: latest
     created: "2021-12-25T16:59:37.76814031Z"
     description: A Drone component to fetch secrets from a Kubernetes cluster
     digest: 5f36fbc95d4e856070d4ebdb643a40d6a94a3812e3dc8c8976538c093db6b338
@@ -115,6 +143,20 @@ entries:
     - https://github.com/txqueuelen/drone-charts/releases/download/drone-kubernetes-secrets-1.0.0/drone-kubernetes-secrets-1.0.0.tgz
     version: 1.0.0
   drone-runner-kube:
+  - apiVersion: v2
+    appVersion: 1.0.0-rc.2
+    created: "2021-12-25T17:37:58.354893462Z"
+    description: Helm chart to deploy a Kubernetes runner for Drone
+    digest: 1961cd00e93859440122f7254042ccf8f911bc7115139b716baecc80fe0d3d66
+    maintainers:
+    - email: sysadmin@kangmak.es
+      name: kang-makes
+      url: kangmak.es
+    name: drone-runner-kube
+    type: application
+    urls:
+    - https://github.com/txqueuelen/drone-charts/releases/download/drone-runner-kube-1.3.1/drone-runner-kube-1.3.1.tgz
+    version: 1.3.1
   - apiVersion: v2
     appVersion: 1.0.0-rc.2
     created: "2021-12-25T16:59:37.885318Z"
@@ -340,4 +382,4 @@ entries:
     urls:
     - https://github.com/txqueuelen/drone-charts/releases/download/drone-server-1.0.1/drone-server-1.0.1.tgz
     version: 1.0.1
-generated: "2021-12-25T16:59:37.885444406Z"
+generated: "2021-12-25T17:37:58.355008464Z"
