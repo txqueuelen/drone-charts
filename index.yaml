@@ -141,6 +141,22 @@ entries:
     urls:
     - https://github.com/txqueuelen/drone-charts/releases/download/drone-1.0.0/drone-1.0.0.tgz
     version: 1.0.0
+  drone-convert-starlark:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2021-12-25T19:49:17.89464146Z"
+    description: Allows Drone to convert pipelines in starlark into Json parsable
+      by Drone
+    digest: b2018b3a3541fda323b3898fb06769d5665fae9abbd76d4b78e3d8aba25103af
+    maintainers:
+    - email: sysadmin@kangmak.es
+      name: kang-makes
+      url: kangmak.es
+    name: drone-convert-starlark
+    type: application
+    urls:
+    - https://github.com/txqueuelen/drone-charts/releases/download/drone-convert-starlark-1.0.0/drone-convert-starlark-1.0.0.tgz
+    version: 1.0.0
   drone-kubernetes-secrets:
   - apiVersion: v2
     appVersion: latest
@@ -508,4 +524,4 @@ entries:
     urls:
     - https://github.com/txqueuelen/drone-charts/releases/download/drone-server-1.0.1/drone-server-1.0.1.tgz
     version: 1.0.1
-generated: "2021-12-25T19:32:23.709808368Z"
+generated: "2021-12-25T19:49:17.894810062Z"
