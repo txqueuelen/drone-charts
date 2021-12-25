@@ -3,6 +3,20 @@ entries:
   drone:
   - apiVersion: v2
     appVersion: 2.5.0
+    created: "2021-12-25T16:09:46.449706986Z"
+    description: Helm chart to deploy Drone CI in Kubernetes
+    digest: 0a9c4f2042962c31d6f82be8d2617318f37bcaed46553a4723fd2fe6472fd22b
+    maintainers:
+    - email: sysadmin@kangmak.es
+      name: kang-makes
+      url: kangmak.es
+    name: drone
+    type: application
+    urls:
+    - https://github.com/txqueuelen/drone-charts/releases/download/drone-1.1.0/drone-1.1.0.tgz
+    version: 1.1.0
+  - apiVersion: v2
+    appVersion: 2.5.0
     created: "2021-12-17T23:10:24.298399881Z"
     description: Helm chart to deploy Drone CI in Kubernetes
     digest: fa339b574455c5236f9aefd89bcb7fad1fdbe6f99d73b1c11fe27c73d4b6f886
@@ -72,6 +86,20 @@ entries:
     - https://github.com/txqueuelen/drone-charts/releases/download/drone-1.0.0/drone-1.0.0.tgz
     version: 1.0.0
   drone-runner-kube:
+  - apiVersion: v2
+    appVersion: 1.0.0-rc.2
+    created: "2021-12-25T16:09:46.578557692Z"
+    description: Helm chart to deploy a Kubernetes runner for Drone
+    digest: 69854f81086c402e5f12a4d1bfadf34c0d40b469e910ddfdc52c5b04561d90a1
+    maintainers:
+    - email: sysadmin@kangmak.es
+      name: kang-makes
+      url: kangmak.es
+    name: drone-runner-kube
+    type: application
+    urls:
+    - https://github.com/txqueuelen/drone-charts/releases/download/drone-runner-kube-1.2.0/drone-runner-kube-1.2.0.tgz
+    version: 1.2.0
   - apiVersion: v2
     appVersion: 1.0.0-rc.2
     created: "2021-12-16T14:50:00.630597047Z"
@@ -269,4 +297,4 @@ entries:
     urls:
     - https://github.com/txqueuelen/drone-charts/releases/download/drone-server-1.0.1/drone-server-1.0.1.tgz
     version: 1.0.1
-generated: "2021-12-17T23:10:24.298460781Z"
+generated: "2021-12-25T16:09:46.578643596Z"
