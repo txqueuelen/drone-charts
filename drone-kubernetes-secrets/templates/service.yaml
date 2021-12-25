@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "drone-kubernetes-secrets.fullname" . }}
+  labels:
+    {{- include "drone-kubernetes-secrets.labels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "drone-kubernetes-secrets.selectorLabels" . | nindent 4 }}
