@@ -10,7 +10,7 @@ description: Helm chart to deploy Drone CI in Kubernetes
 type: application
 appVersion: 2.5.0
 
-version: 1.2.1
+version: 1.2.2
 
 maintainers:
   - name: kang-makes
