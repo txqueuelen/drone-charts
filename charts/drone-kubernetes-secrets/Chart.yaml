@@ -1,0 +1,15 @@
+apiVersion: v2
+name: drone-kubernetes-secrets
+description: A Drone component to fetch secrets from a Kubernetes cluster
+
+type: application
+
+version: 1.0.0
+
+# Yeah. Seriously. This component has not versioning in docker hub
+appVersion: latest
+
+maintainers:
+  - name: kang-makes
+    email: sysadmin@kangmak.es
+    url: kangmak.es

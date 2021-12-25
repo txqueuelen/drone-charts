@@ -1,0 +1,37 @@
+{{- if .Values.rbac.enabled -}}
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: {{ include "drone-kubernetes-secrets.fullname" . }}
+  namespace: {{ .Values.rbac.secretNamespace | default .Release.Namespace | quote }}
+  labels:
+    {{- include "drone-kubernetes-secrets.labels" . | nindent 4 }}
+rules:
+  - apiGroups:
+    - ""
+    resources:
+    - secrets
+  {{ if .Values.rbac.restrictToSecrets }}
+    resourceNames:
+    {{- toYaml .Values.rbac.restrictToSecrets | nindent 6 }}
+  {{ end }}
+    verbs:
+    - get
+    - watch
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: {{ include "drone-kubernetes-secrets.fullname" . }}
+  namespace: {{ .Values.rbac.secretNamespace | default .Release.Namespace | quote }}
+  labels:
+    {{- include "drone-kubernetes-secrets.labels" . | nindent 4 }}
+subjects:
+- kind: ServiceAccount
+  name: {{ include "drone-kubernetes-secrets.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+roleRef:
+  kind: Role
+  name: {{ include "drone-kubernetes-secrets.fullname" . }}
+  apiGroup: rbac.authorization.k8s.io
+{{- end -}}
