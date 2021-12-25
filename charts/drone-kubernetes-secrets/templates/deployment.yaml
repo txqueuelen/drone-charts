@@ -13,6 +13,8 @@ spec:
     metadata:
       {{- with .Values.podAnnotations }}
       annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+        checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
@@ -36,10 +38,10 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
             - configMapRef:
-                name: {{ include "drone.fullname" . }}
+                name: {{ include "drone-kubernetes-secrets.fullname" . }}
                 optional: true
             - secretRef:
-                name: {{ include "drone.fullname" . }}
+                name: {{ include "drone-kubernetes-secrets.fullname" . }}
                 optional: true
           {{- range .Values.envFrom.secrets }}
             - secretRef:
