@@ -11,7 +11,7 @@ type: application
 # Yeah. Seriously. This component has not versioning in docker hub
 appVersion: latest
 
-version: 1.0.2
+version: 1.0.3
 
 maintainers:
   - name: kang-makes
